@@ -34,9 +34,9 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=admin1234
     restart: always
     ports:
-      - "5432:5432"
+      - "5050:80"
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - pgadmin_data:/root/.pgadmin/
 
   portainer:
     container_name: portainer
