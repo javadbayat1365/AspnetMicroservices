@@ -18,8 +18,8 @@ services:
   discountdb:
     container_name: discountdb
     environment:
-      - POSTGRES_PASSWORD=admin1234
       - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
       - POSTGRES_DB=DiscountDb
     restart: always
     ports:
@@ -62,8 +62,18 @@ services:
     container_name: basket.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "CacheSettings:ConnectionString=basketdb:27017"
+      - "CacheSettings:ConnectionString=basketdb:6379"
     depends_on:
       - basketdb
     ports:
       - "8001:80"
+
+  discount.api:
+    container_name: discount.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
+    depends_on:
+      - discountdb
+    ports:
+      - "8002:80"

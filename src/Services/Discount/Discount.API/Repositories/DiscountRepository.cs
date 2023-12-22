@@ -17,11 +17,22 @@ namespace Discount.API.Repositories
         {
             //PostgreSql Connection
            using var connection = new NpgsqlConnection(_Config.GetValue<string>("DatabaseSettings:ConnectionString"));
-
+            try
+            {
+                connection.Open();
             var coupon = await connection
                 .QueryFirstOrDefaultAsync<Coupon>("Select * from Coupon where ProductName = @ProductName",
                                                    new { ProductName = productName });
-            return coupon;
+                if (coupon == null)
+                    return new Coupon
+                    { ProductName = "No Discount", Amount = 0, Description = "No Discount Desc" };
+                return coupon;
+            }
+            catch (Exception w)
+            {
+
+                throw;
+            }
         }
         public async Task<bool> CreateDiscount(Coupon coupon)
         {
