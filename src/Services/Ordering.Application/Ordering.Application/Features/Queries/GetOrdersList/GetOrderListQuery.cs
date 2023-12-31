@@ -2,4 +2,4 @@
 
 namespace Ordering.Application.Features.Queries.GetOrdersList;
 
-public record GetOrderListQuery(string UserName): IRequest<List<OrderDto>>;
+public record GetOrderListQuery(string UserName): IRequest<IEnumerable<OrderDto>>;
