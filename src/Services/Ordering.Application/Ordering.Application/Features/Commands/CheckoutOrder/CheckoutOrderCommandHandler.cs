@@ -39,7 +39,7 @@ internal class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderComman
         try
         {
            await _emailService.SendEmailAsync(new Models.Email(
-                  "javadbayat.1365@gmail.com",
+                  "ariaariai_aa@yahoo.com",
                   "Send Order!",
                   $"The order with {orderId} registered and is in proccess..."
                 ));
