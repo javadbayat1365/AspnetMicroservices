@@ -1,4 +1,5 @@
-﻿using Ordering.Application.Contracts.Persistances;
+﻿using Microsoft.EntityFrameworkCore;
+using Ordering.Application.Contracts.Persistances;
 using Ordering.Domian.Entities;
 using Ordering.Infrastructure.Persistence;
 
@@ -10,8 +11,8 @@ public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     {
     }
 
-    public Task<IEnumerable<Order>> GetByUserName(string userName)
+    public async Task<IEnumerable<Order>> GetByUserName(string userName)
     {
-        throw new NotImplementedException();
+        return await _context.orders.Where(f => f.UserName == userName).ToListAsync();
     }
 }
