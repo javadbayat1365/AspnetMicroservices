@@ -28,7 +28,7 @@ internal class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderComman
 
     public async Task<int> Handle(CheckoutOrderCommand request, CancellationToken token)
     {
-        var orderId = await _orderRepository.AddAsync(_mapper.Map<Order>(request),token);
+        var orderId = await _orderRepository.AddAsync(_mapper.Map<Order>(request));
         _logger.LogInformation($"the order with ID : {orderId} added");
          await SendEmailAsync(orderId.Id);
         return orderId.Id;
@@ -39,7 +39,7 @@ internal class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderComman
         try
         {
            await _emailService.SendEmailAsync(new Models.Email(
-                  "javadbayat.1365@gmail.com",
+                  "ariaariai_aa@yahoo.com",
                   "Send Order!",
                   $"The order with {orderId} registered and is in proccess..."
                 ));

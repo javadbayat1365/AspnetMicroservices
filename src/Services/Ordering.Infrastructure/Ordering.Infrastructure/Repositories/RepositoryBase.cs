@@ -15,10 +15,19 @@ public class RepositoryBase<T>:IAsyncRepository<T> where T : EntityBase
         _context = context;
     }
 
-    public async Task<T> AddAsync(T entity, CancellationToken token)
+    public async Task<T> AddAsync(T entity)
     {
-        await _context.Set<T>().AddAsync(entity, token);
-        await _context.SaveChangesAsync(token);
+        try
+        {
+            _context.Set<T>().Add(entity);
+            await _context.SaveChangesAsync();
+
+        }
+        catch (Exception e)
+        {
+
+            throw;
+        }
         return entity;
     }
 
