@@ -1,4 +1,8 @@
 ﻿namespace Ordering.Application.Models;
 
-public record EmailSettings(string ApiKey,string FromAddress,string FromName);
-
+public class EmailSettings
+{
+    public string ApiKey { get; set; }
+    public string FromAddress { get; set; }
+    public string FromName { get; set; }
+}

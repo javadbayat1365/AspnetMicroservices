@@ -9,9 +9,9 @@ public class OrderContext : DbContext
     public OrderContext(DbContextOptions options) : base(options)
     {
     }
-    public DbSet<Order>  orders { get; set; }
+    public DbSet<Order>  Orders { get; set; }
 
-    public override Task<int> SaveChangesAsync(CancellationToken token = default)
+    public override async Task<int> SaveChangesAsync(CancellationToken token = default)
     {
         foreach (var item in ChangeTracker.Entries<EntityBase>())
         {
@@ -27,7 +27,7 @@ public class OrderContext : DbContext
             }
         }
 
-        return base.SaveChangesAsync(token);
+        return await base.SaveChangesAsync(token);
     }
 
 

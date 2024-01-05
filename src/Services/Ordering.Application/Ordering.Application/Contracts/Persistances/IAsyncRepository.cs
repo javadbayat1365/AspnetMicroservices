@@ -20,7 +20,7 @@ public interface IAsyncRepository<T> where T : EntityBase
                      bool disableTracking = true,
                      CancellationToken token = default);
     Task<T> GetByIdAsync(int Id,CancellationToken token);
-    Task<T> AddAsync(T entity, CancellationToken token);
+    Task<T> AddAsync(T entity);
     Task UpdateAsync(T entity, CancellationToken token);
     Task DeleteAsync(T entity, CancellationToken token);
 }

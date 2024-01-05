@@ -13,9 +13,9 @@ namespace Ordering.Infrastructure.Persistence
     {
         public static async Task SeedAsync(OrderContext dbContext,ILogger<OrderContextSeed> logger,CancellationToken token)
         {
-            if (!dbContext.orders.Any())
+            if (!dbContext.Orders.Any())
             {
-              await  dbContext.orders.AddRangeAsync(SeedOrders(), token);
+              await  dbContext.Orders.AddRangeAsync(SeedOrders(), token);
             }
         }
 
