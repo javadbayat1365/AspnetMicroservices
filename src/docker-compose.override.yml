@@ -36,6 +36,13 @@ services:
     ports:
         - "1433:1433"
 
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "672:5672"
+      - "15672:15672"
+
   pgadmin:
     container_name: pgadmin
     environment:
@@ -104,7 +111,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ConnectionStrings:OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=aria#54321"
     depends_on:
-        - orderdb
+      - orderdb
     ports:
-        - "8004:80"
+      - "8004:80"
 
