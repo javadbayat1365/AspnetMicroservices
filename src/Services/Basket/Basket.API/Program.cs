@@ -18,6 +18,7 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
     option => { option.Address = new Uri(builder.Configuration["GrpcSettings:DiscountGrpcUrl"]); });
 
 builder.Services.AddScoped<DiscountGrpcService>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 //Mass-transit RabbitMQ Configuration
 builder.Services.AddMassTransit(configure => {
@@ -25,8 +26,6 @@ builder.Services.AddMassTransit(configure => {
         cnf.Host(builder.Configuration["EventBusSettings:HostAddress"]);
     });
  });
-
-builder.Services.AddMassTransitTestHarness();//.AddMassTransitHostedService();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

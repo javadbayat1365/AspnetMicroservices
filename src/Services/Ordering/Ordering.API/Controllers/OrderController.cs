@@ -29,7 +29,7 @@ namespace Ordering.API.Controllers
         [HttpPost("[action]")]
         [ProducesResponseType(typeof(int),(int)HttpStatusCode.OK)]
         public async Task<ActionResult<int>> CheckoutOrder([FromBody] CheckoutOrderCommand model, CancellationToken token = default)
-         => Ok(_mediator.Send(model, token));
+         => Ok(await _mediator.Send(model, token));
 
         [HttpPut("[action]")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

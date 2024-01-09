@@ -20,7 +20,7 @@ public class DiscountService: DiscountProtoService.DiscountProtoServiceBase
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public override async Task<CouponModel> GetDiscount(GetDiscountRequest request, ServerCallContext context)
+    public override  Task<CouponModel> GetDiscount(GetDiscountRequest request, ServerCallContext context)
     {
         var coupon = _repository.GetDiscount(request.ProductName);
         if (coupon is null)
@@ -30,7 +30,7 @@ public class DiscountService: DiscountProtoService.DiscountProtoServiceBase
         _logger.LogInformation($"Discount Is Retrive By Name : {request.ProductName}");
 
         var couponModel = _mapper.Map<CouponModel>(coupon);
-        return couponModel;
+        return Task.FromResult(couponModel);
     }
 
     public override async Task<CouponModel> CreateDiscount(CreateDiscountRequest request, ServerCallContext context)
