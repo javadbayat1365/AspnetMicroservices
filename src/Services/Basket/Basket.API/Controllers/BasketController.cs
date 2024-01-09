@@ -61,7 +61,7 @@ public class BasketController : ControllerBase
     [HttpPost("[action]")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<IActionResult> Checkout([FromBody] BasketCheckout basketCheckout)
+    public async Task<IActionResult> Checkout([FromBody] BasketCheckout basketCheckout,CancellationToken token)
     {
         var basket =await _basketRepository.GetBasket(basketCheckout.UserName);
         if (basket == null)
@@ -69,7 +69,7 @@ public class BasketController : ControllerBase
 
         var eventMessage = _mapper.Map<BasketCheckoutEvent>(basketCheckout);
         eventMessage.TotalPrice = basket.TotalPrice;
-        await _publishEndpoint.Publish(eventMessage);
+       await _publishEndpoint.Publish(eventMessage,token);
 
 
        await _basketRepository.DeleteBasket(basketCheckout.UserName);

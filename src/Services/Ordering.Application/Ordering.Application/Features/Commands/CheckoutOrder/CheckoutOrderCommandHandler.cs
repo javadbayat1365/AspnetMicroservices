@@ -29,8 +29,11 @@ internal class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderComman
     public async Task<int> Handle(CheckoutOrderCommand request, CancellationToken token)
     {
         var orderId = await _orderRepository.AddAsync(_mapper.Map<Order>(request));
+
         _logger.LogInformation($"the order with ID : {orderId} added");
+
          await SendEmailAsync(orderId.Id);
+
         return orderId.Id;
     }
 
