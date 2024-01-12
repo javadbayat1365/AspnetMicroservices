@@ -2,7 +2,6 @@
 using Ordering.Application.Contracts.Persistances;
 using Ordering.Domian.Common;
 using Ordering.Infrastructure.Persistence;
-using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace Ordering.Infrastructure.Repositories;
