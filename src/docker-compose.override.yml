@@ -38,9 +38,12 @@ services:
 
   rabbitmq:
     container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
     restart: always
     ports:
-      - "672:5672"
+      - "5672:5672"
       - "15672:15672"
 
   pgadmin:
@@ -80,8 +83,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings:ConnectionString=basketdb:6379"
       - "GrpcSettings:DiscountGrpcUrl=http://discount.grpc"
+      - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - basketdb
+      - rabbitmq
     ports:
       - "8001:80"
 
@@ -94,6 +99,7 @@ services:
       - discountdb
     ports:
       - "8002:80"
+
   discount.grpc:
     container_name: discount.grpc
     environment:
@@ -110,8 +116,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ConnectionStrings:OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=aria#54321"
+      - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - orderdb
+      - rabbitmq
     ports:
       - "8004:80"
 
