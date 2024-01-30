@@ -1,14 +1,13 @@
+using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//builder.Services.AddEndpointsApiExplorer();
 
-builder.Configuration.AddJsonFile("ocelot.local.json", optional: false, reloadOnChange: true);
-builder.Services.AddOcelot(builder.Configuration);
+builder.Configuration.AddJsonFile("ocelot.Development.json", optional: false, reloadOnChange: true);
+builder.Services.AddOcelot(builder.Configuration).AddCacheManager(o => o.WithDictionaryHandle());
 
 var app = builder.Build();
 
