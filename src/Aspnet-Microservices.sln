@@ -39,6 +39,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGetways", "ApiGetways", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotApiGw", "ApiGetways\OcelotApiGW\OcelotApiGw.csproj", "{A2513CE2-DEE3-4D3D-81F4-7436E32FABF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Aggregator", "ApiGetways\Shopping.Aggregator\Shopping.Aggregator.csproj", "{C18D37F5-6E75-419A-8C68-6C9AC73C8293}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +91,10 @@ Global
 		{A2513CE2-DEE3-4D3D-81F4-7436E32FABF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2513CE2-DEE3-4D3D-81F4-7436E32FABF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2513CE2-DEE3-4D3D-81F4-7436E32FABF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C18D37F5-6E75-419A-8C68-6C9AC73C8293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C18D37F5-6E75-419A-8C68-6C9AC73C8293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C18D37F5-6E75-419A-8C68-6C9AC73C8293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C18D37F5-6E75-419A-8C68-6C9AC73C8293}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,6 +114,7 @@ Global
 		{55F1582C-7DA4-43B9-A754-D63B837A2F23} = {1C031882-E3A8-43EB-B6B9-02D8AA40292A}
 		{EBD90FD6-B0AD-4559-81B2-7B4AC67D576F} = {25FC46D8-6D1D-4340-BE7D-FDA6197CD605}
 		{A2513CE2-DEE3-4D3D-81F4-7436E32FABF8} = {8192ABAB-99E3-4FF3-B9BD-C9C61D8DE5CC}
+		{C18D37F5-6E75-419A-8C68-6C9AC73C8293} = {8192ABAB-99E3-4FF3-B9BD-C9C61D8DE5CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E2C7B522-3B7D-44D3-9665-2D1D2C46EA11}
