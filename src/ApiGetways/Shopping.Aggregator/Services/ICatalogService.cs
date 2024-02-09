@@ -6,6 +6,6 @@ namespace Shopping.Aggregator.Services
     {
         Task<IEnumerable<CatalogModel>> GetCatalog();
         Task<CatalogModel> GetCatalog(string catalogId);
-        Task<CatalogModel> GetCatalogByName(string catalogName);
+        Task<IEnumerable<CatalogModel>> GetCatalogByName(string catalogName);
     }
 }
