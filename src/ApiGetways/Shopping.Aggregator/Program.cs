@@ -1,3 +1,5 @@
+using Shopping.Aggregator.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +11,15 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+
+builder.Services.AddHttpClient<ICatalogService,CatalogService>(c =>
+    c.BaseAddress = new Uri(builder.Configuration["ApiSettings:CatalogUrl"]));
+
+builder.Services.AddHttpClient<IBasketService, BasketService>(c =>
+    c.BaseAddress = new Uri(builder.Configuration["ApiSettings:BasketUrl"]));
+
+builder.Services.AddHttpClient<IOrderingService, OrderingService>(c => 
+    c.BaseAddress = new Uri(builder.Configuration["ApiSettings:OrderingUrl"]));
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
